@@ -50,7 +50,7 @@ const NFTCard = ( { data } ) => {
                 minWidth={ 120}
                 btnText="Place a Bid"
                 fontSize={SIZES.font}
-                onPress={()=>navigation.navigate("Details",{data})}
+                handlePress={()=>navigation.navigate("Details",{data})}
             />
             </View>
       </View>
