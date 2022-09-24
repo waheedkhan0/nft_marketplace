@@ -2,7 +2,7 @@ import { TouchableOpacity,View, Text,Image } from 'react-native'
 import React from 'react';
 import { COLORS, SHADOWS, SIZES } from '../constants';
 
-export const CircleButton = (imgUrl,handlePress, ...props) => {
+export const CircleButton = ({imgUrl,handlePress, ...props}) => {
   return (
     <TouchableOpacity style={{
         width:40,
@@ -13,12 +13,12 @@ export const CircleButton = (imgUrl,handlePress, ...props) => {
         alignItems: 'center',
         justifyContent:'center',
         ...SHADOWS.light,
-        ...props
+        ...props,
         }}
         onPress={handlePress }>
             <Image 
+                source={imgUrl}
                 resizeMode = 'contain'
-                
                 style={{width:24,height:24,}}
             />
 
@@ -26,10 +26,26 @@ export const CircleButton = (imgUrl,handlePress, ...props) => {
   )
 }
 
-export const RectButton = () => {
+export const RectButton = ({minWidth,fontSize,btnText,handlePress,...props}) => {
     return (
-      <View>
-        <Text>RectButton</Text>
-      </View>
+        <TouchableOpacity style={{
+            minWidth:minWidth ,
+            backgroundColor:COLORS.primary,
+            borderRadius: SIZES.extraLarge,
+            padding:SIZES.small,
+            ...props,
+            }}
+            onPress={handlePress }>
+        <Text
+            style={{
+                fontSize:fontSize,
+                color:COLORS.white,
+                textAlign:'center'
+            }}
+        >
+            {btnText}
+        </Text>
+    
+        </TouchableOpacity>
     )
   }

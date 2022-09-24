@@ -1,51 +1,91 @@
-import { View, Text } from 'react-native'
+import { View, Text,Image } from 'react-native'
 import React from 'react'
+import { SIZES,assets, COLORS, SHADOWS, FONTS } from '../constants'
 
-export const NFTTitle = () => {
+export const NFTTitle = ({title,subTitle,titleSize,subTitleSize}) => {
   return (
     <View>
-      <Text>SubInfo</Text>
+      <Text style={{fontSize:titleSize,color:COLORS.primary}}>{title}</Text>
+      <Text style={{fontSize:subTitleSize,color:COLORS.primary}}>{subTitle}</Text>
     </View>
   )
 }
 
-export const ETHPrice = () => {
+export const ETHPrice = ({price}) => {
     return (
-      <View>
-        <Text>EthPrice</Text>
+      <View style={{flexDirection:'row',alignItems:'center'}}>
+        <Image
+            source={assets.eth}
+            resizeMode="contain"
+            style={{height:20,width:20,marginRight:2}} />
+        <Text style={{fontSize:SIZES.font,color:COLORS.primary}}>{price}</Text>
       </View>
     )
   }
 
-  export const ImageCmp = () => {
+  export const ImageCmp = ({imgUrl,index}) => {
     return (
-      <View>
-        <Text>Image Cmp</Text>
-      </View>
+      <Image 
+        source={imgUrl}
+        resizeMode="contain"
+        style={{
+            height:48,
+            width:48,
+            marginLeft: index === 0 ? 0 : -SIZES.font
+        }}
+      />
     )
   }
 
 
   export const EndDate = () => {
     return (
-      <View>
-        <Text>EndDate</Text>
+      <View style={{
+        paddingHorizontal: SIZES.font,
+        paddingVertical: SIZES.base,
+        backgroundColor: COLORS.white,
+        justifyContent: 'center',
+        alignItems:'center',
+        ...SHADOWS.light,
+        elevation:1,
+        maxWidth:"50%"
+      }}>
+        <Text style={
+            {
+                fontSize:SIZES.small,
+                fontFamily:FONTS.regular,
+                color:COLORS.primary
+            }}>Ending in</Text>
+         <Text style={
+            {
+                fontSize:SIZES.medium,
+                fontFamily:FONTS.semiBold,
+                color:COLORS.primary
+            }}>12h 30m</Text>
       </View>
     )
   }
 
   export const People = () => {
     return (
-      <View>
-        <Text>People</Text>
+      <View style={{flexDirection:"row"}}>
+        {[assets.person02,assets.person03,assets.person04].map((imgUrl,index)=>{
+            return <ImageCmp imgUrl={imgUrl} index={index} key={`People-${index}`} />
+        })}
       </View>
     )
   }
 
   export const SubInfo = () => {
     return (
-      <View>
-        <Text>SubInfo</Text>
+      <View style={{
+        width:'100%',
+        paddingHorizontal:-SIZES.extraLarge,
+        flexDirection:"row",
+        justifyContent: "space-between"
+      }}>
+        <People />
+        <EndDate />
       </View>
     )
   }
