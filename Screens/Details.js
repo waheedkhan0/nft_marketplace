@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View,Image,FlatList,SafeAreaView,StatusBar } from 'react-native';
 import { COLORS,FONTS,SIZES,assets, SHADOWS } from '../constants';
-import { CircleButton,RectButton,SubInfo,FocusedStatusBar,DetailDesc,DetailsBid } from '../components';
+import { CircleButton,RectButton,SubInfo,FocusedStatusBar,DetailsDesc,DetailsBid } from '../components';
 
 
 const DetailsHeader = ({data,navigation}) => {
@@ -54,6 +54,7 @@ const Details = ({route,navigation}) => {
                 <React.Fragment>
                     <DetailsHeader data={data} navigation={navigation} />
                     <SubInfo />
+                    <DetailsDesc data={data} />
                 </React.Fragment>
             )
         }
