@@ -58,8 +58,9 @@ const DetailsDesc = ({data}) => {
                 <Text style={{
                     fontFamily:FONTS.semiBold,
                     fontSize:SIZES.font,
-                    color:COLORS.primary
-                }}>Current Bid</Text>
+                    color:COLORS.primary,
+                    marginTop:SIZES.large
+                }}>Current Bids</Text>
             )}
         </View>
     </>
